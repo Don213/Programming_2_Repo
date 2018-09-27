@@ -1,0 +1,19 @@
+﻿  Source.cpp
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(93): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(118): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(120): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(123): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(125): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(130): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(132): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(135): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(137): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(142): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(144): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(147): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(149): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(154): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(156): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(159): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_2\johnsondaniel_hw2_2\source.cpp(161): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+  JohnsonDaniel_HW2_2.vcxproj -> C:\Users\Daniel\Desktop\C++ Repo\Programming_2_Repo\JohnsonDaniel_HW2_2\x64\Debug\JohnsonDaniel_HW2_2.exe
