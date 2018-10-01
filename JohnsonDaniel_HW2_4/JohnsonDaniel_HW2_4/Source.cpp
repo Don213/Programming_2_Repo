@@ -1,3 +1,23 @@
+////////////////////////////////
+//
+// Daniel Johnson
+// HW2.4
+// 9/27/18
+//
+////////////////////////////////
+
+
+////////////////////////////////
+//
+// DESCRIPTION: This program creates a maze from recursion techniques. It starts with a full box of X's and then
+// digs them out until it cannot anymore with the guidelines given.
+//
+//
+//
+////////////////////////////////
+
+
+
 #include <iostream>
 #include <ctime>
 using namespace std;
@@ -5,7 +25,7 @@ using namespace std;
 int static const WIDTH = 25, HEIGHT = 25;
 
 
-
+//prints maze out
 void printMaze(char maze[][WIDTH])
 {
 	for (int y = 0; y < HEIGHT; y++)
@@ -20,7 +40,7 @@ void printMaze(char maze[][WIDTH])
 
 
 
-
+//intitializes all X's in the maze as digging preparation 
 void initializeMazeOutline(char maze[][WIDTH])
 {
 	//Creates a block of X's to dig through
@@ -35,7 +55,7 @@ void initializeMazeOutline(char maze[][WIDTH])
 	maze[1][1] = ' ';
 }
 
-
+//Creates a random array with numbers 1-4
 void initializeRandomArray(int randArray[])
 {
 	int randVar;
@@ -61,14 +81,14 @@ void initializeRandomArray(int randArray[])
 
 
 
-
+//digs a tunnel through a maze that is all X's
 void digTunnel(char maze[][WIDTH], int & curX, int & curY)
 {
 	//random array for directions
 	int randArray[4];
 	initializeRandomArray(randArray);
 
-
+	//checks to see if the maze is unable to be dugout anymore
 	if ((curY + 2 >= WIDTH || maze[curY + 2][curX] == ' ')
 		&& (curY - 2 >= WIDTH || maze[curY - 2][curX] == ' ')
 		&& (curX - 2 >= HEIGHT || maze[curY][curX - 2] == ' ')
@@ -78,6 +98,8 @@ void digTunnel(char maze[][WIDTH], int & curX, int & curY)
 		return;
 	}
 
+
+	//loop to go through the 4 random values symbolizing up, down, left, and right
 	for (int i = 0; i < 4; i++)
 	{
 		switch (randArray[i])
@@ -165,38 +187,22 @@ void digTunnel(char maze[][WIDTH], int & curX, int & curY)
 
 int main()
 {
-	srand(time(NULL));
+	srand(time(NULL));//seeds random
 	char maze[HEIGHT][WIDTH];
 
+
+	//starting location for the maze
 	int startX = 1;
 	int startY = 1;
 
 
-	/*
-	for (int i = 0; i < WIDTH; i++)
-	{
-		maze[0][i] = 'X';
-		maze[i][0] = 'X';
-		maze[8][i] = 'X';
-		maze[i][8] = 'X';
-	}
-	*/
 
+	//initializes X  maze, digs the maze out, and prints the maze
 	initializeMazeOutline(maze);
 	digTunnel(maze, startY, startX);
 	printMaze(maze);
 
 
-
-
 	system("pause");
-
-
-
-
-
-
-
-
 
 }

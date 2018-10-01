@@ -15,15 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="maze-human.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="maze-random.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="maze-solver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

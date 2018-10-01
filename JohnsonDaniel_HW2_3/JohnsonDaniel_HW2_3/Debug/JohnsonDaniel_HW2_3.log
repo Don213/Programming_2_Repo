@@ -1,0 +1,3 @@
+﻿  maze-solver.cpp
+c:\users\daniel\desktop\c++ repo\programming_2_repo\johnsondaniel_hw2_3\johnsondaniel_hw2_3\maze-solver.cpp(197): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  JohnsonDaniel_HW2_3.vcxproj -> C:\Users\Daniel\Desktop\C++ Repo\Programming_2_Repo\JohnsonDaniel_HW2_3\Debug\JohnsonDaniel_HW2_3.exe
