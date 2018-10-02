@@ -3,21 +3,14 @@
 
 using namespace std;
 
-
+bool test0 = 0;
 
 
 int main()
 {
-	string testString = "hello there";
 
-
-
-
-	cout << testString[0] << endl;
-
-	system("pause");
-	return 0;
-	
+	cout << test0;
+	cin.get();
 
 
 }
