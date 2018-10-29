@@ -9,27 +9,21 @@
 
 ////////////////////////////////
 //
-// DESCRIPTION: This program makes a dynamic array go from 5 ints long to 10 ints long.
+// DESCRIPTION: This program makes a dynamic array go from 5 ints long to 10 ints long and have 999 as every element.
 // The code was fixed to allow this to happen in the main function.
 //
 //
 //
 // 1. Everything looks fine in the function because the dynamic array is passed by value (passes the value pointed to by the pointer.) so
 // all the variables look the same and behave normally. It looks like garbage in the main because
-// the variable needs to be passed by reference instead.
+// the variable needs to be passed by reference instead so that the actual array is changed instead of a temporary one.
 //
 // 2. The program is fixed.
 //
 //
 ////////////////////////////////
-
-
-
-
-
 #include <iostream>
 using namespace std;
-
 
 
 //The following function has a parameter that is a pointer to ints. It outputs the 5 integers 
@@ -78,10 +72,8 @@ int main()
 		cout << p[i] << " ";
 	cout << endl;
 
-	delete[] p;
-	cin.get();
+	delete[] p;//frees space
 
-
-
-
+	cout << endl << endl << "Please press enter to exit the program." << endl << endl;
+	cin.get();//pauses program
 }

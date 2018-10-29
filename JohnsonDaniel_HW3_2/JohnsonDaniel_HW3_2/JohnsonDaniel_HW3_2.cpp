@@ -1,45 +1,36 @@
+////////////////////////////////
+//
+// Daniel Johnson
+// Assignment 3.2
+// 10/19/2018
+//
+////////////////////////////////
+
+
+////////////////////////////////
+//
+// DESCRIPTION: This program decrypts a secret message with a random key.
+//
+// The part that checked every key is commented out to simplify the output 
+// and only show the intended message with the correct key.
+//
+//
+//
+//
+//
+// The decription key is 211
+// "If you can read this you solved the problem!"
+//
+////////////////////////////////
 #include <iostream>
 using namespace std;
 
-//The decription key is 211
-//"If you can read this you solved the problem!"
 
 
 
 
+//Was used for testing purposes.
 /*
-void ptrArrayIncrease(char *&p, int originalLength, int newLength)
-{
-
-	// Allocate new array of 10 ints and make p point to it
-	char *p2 = new char[newLength];
-	// Free memory allocated to old array
-
-	for (int i = 0; i < originalLength; i++)
-	{
-		p2[i] = p[i];
-	}
-
-	delete p;
-	// Set pointer to new array
-	p = p2;
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void encryptMessage(char *plaintext, int secretKey)
 {
 	int len = strlen(plaintext);
@@ -50,7 +41,7 @@ void encryptMessage(char *plaintext, int secretKey)
 		ptrInt++;
 	}
 }
-
+*/
 
 
 void decryptMessage(int *numSequence, int length, int secretKey)
@@ -68,7 +59,6 @@ void decryptMessage(int *numSequence, int length, int secretKey)
 		cout << ptrChar[i];
 	}
 	delete tempIntPtr;
-	//delete numSequence;
 }
 
 
@@ -76,6 +66,7 @@ void decryptMessage(int *numSequence, int length, int secretKey)
 int main()
 {
 	
+	//Said to write a program that puts the encoded numbers into and array or ints.
 	int numSequence [11] = {
 		2041560404,
 		1672465530,
@@ -90,67 +81,25 @@ int main()
 		570211447
 	};
 	
-	//int numSequence[3] = {1819044872,1750345519,560298277};
 
-	/*
-	int numSequence[25] = {
-		1819044872,
-		1750345519,
-		560298277,
-		544822240,
-		1701668910,
-		544436192,
-		1768843268,
-		1629516581,
-		1948281646,
-		544436264,
-		1629518377,
-		1936030432,
-		1735290932,
-		1920236000,
-		543651113,
-		544372262,
-		543518516,
-		1919118387,
-		1830845221,
-		1634957861,
-		1679846439,
-		2037541413,
-		1869183792,
-		1969628974,
-		1769237038
-	};
-	/*
-	int *numArray = new int[25];
-	
-	for (int i = 0; i < 25; i++)
-	{
-		*numArray = numSequence[i];
-		numArray++;
-	}
-	*/
-	/*
-	char secretMessage[103] = "Hello There! My name is Daniel and this is a testing string for the secret message decryption function";
-	encryptMessage(secretMessage, 12);
-	*/
 
-	
+
+	//////Goes through every key value
+	/*
 	for (int k = 0; k <= 255; k++)
 	{
 		cout << "Decryption Key:" << k << endl;
 		decryptMessage(numSequence, 11, k);
 		cout << endl << endl;
 	}
-	
-	
-	//decryptMessage(numSequence, 25, 12);
+	*/
+	//////
+	cout << "The decryption key is 211" << endl;
+	decryptMessage(numSequence, 11, 211);
+	cout << endl << endl;
 	
 
+	cout << "Please press enter to end the program." << endl << endl;
+	cin.get();//pauses the program to look at input.
 	
-	
-	
-	
-	
-	
-	cin.get();
 }

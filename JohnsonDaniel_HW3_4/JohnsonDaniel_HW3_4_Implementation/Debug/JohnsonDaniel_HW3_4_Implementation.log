@@ -1,0 +1,4 @@
+﻿  JohnsonDaniel_HW3_4_Implementation.cpp
+c:\users\daniel\desktop\2018-2019 repositories\programming_2_repo\johnsondaniel_hw3_4\johnsondaniel_hw3_4\johnsondaniel_hw3_4.h(81): warning C4018: '<': signed/unsigned mismatch
+c:\users\daniel\desktop\2018-2019 repositories\programming_2_repo\johnsondaniel_hw3_4_implementation\johnsondaniel_hw3_4_implementation\johnsondaniel_hw3_4_implementation.cpp(28): error C2664: 'void Movie::sortMovieList(Movie *)': cannot convert argument 1 from 'Movie **' to 'Movie *'
+  c:\users\daniel\desktop\2018-2019 repositories\programming_2_repo\johnsondaniel_hw3_4_implementation\johnsondaniel_hw3_4_implementation\johnsondaniel_hw3_4_implementation.cpp(28): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast

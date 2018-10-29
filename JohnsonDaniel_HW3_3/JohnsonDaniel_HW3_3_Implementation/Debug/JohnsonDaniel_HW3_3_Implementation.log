@@ -1,0 +1,5 @@
+﻿  main.cpp
+  Month.cpp
+  Generating Code...
+c:\users\daniel\desktop\2018-2019 repositories\programming_2_repo\johnsondaniel_hw3_3\johnsondaniel_hw3_3_implementation\month.cpp(128): warning C4715: 'Month::getMonthString': not all control paths return a value
+  JohnsonDaniel_HW3_3_Implementation.vcxproj -> C:\Users\Daniel\Desktop\2018-2019 Repositories\Programming_2_Repo\JohnsonDaniel_HW3_3\Debug\JohnsonDaniel_HW3_3_Implementation.exe
