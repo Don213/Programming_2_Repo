@@ -90,19 +90,52 @@ void display()
 	for (int j = 0; j < image1.getHeight(); j++)
 		for (int i = 0; i < image1.getWidth(); i++)		
 		{
-			int r1, g1, b1, r2, g2, b2, r3, g3, b3;
+
+			//Finds all rgb values and determines the median value of 3 choices
+			int r1, g1, b1, r2, g2, b2, r3, g3, b3, mr, mg, mb;
 			image1.getRGB(i, j, r1, g1, b1);
 			image2.getRGB(i, j, r2, g2, b2);
 			image3.getRGB(i, j, r3, g3, b3);
-			if ((i>136) && (i < 215) && (j > 366) && (j<492))
-			{
-				if ((g1 - 30 > r1) && (g1 - 30 > b1))
-				{
-					g1 = g1 / 3;
-					r1 = r1 * 3;
-				}
-			}
-			glColor3f((((float)r1 + (float)r2 + (float)r3)/3) / 255, (((float)g1 + (float)g2 + (float)g3)/3) / 255, (((float)b1 + (float)b2 + (float)b3)/3) / 255);
+			
+
+			//Considers all choices for median value and declares it as mr, mg, and mb
+			if (r1 >= r2 && r1 <= r3 || r1 >= r3 && r1 <= r2)
+				mr = r1;
+			if (r2 >= r1 && r2 <= r3 || r2 >= r3 && r2 <= r1)
+				mr = r2;
+			if (r3 >= r2 && r3 <= r1 || r3 >= r1 && r3 <= r2)
+				mr = r3;
+
+
+			if (g1 >= g2 && g1 <= g3 || g1 >= g3 && g1 <= g2)
+				mg = g1;
+			if (g2 >= g1 && g2 <= g3 || g2 >= g3 && g2 <= g1)
+				mg = g2;
+			if (g3 >= g2 && g3 <= g1 || g3 >= g1 && g3 <= g2)
+				mg = g3;
+
+
+			if (b1 >= b2 && b1 <= b3 || b1 >= b3 && b1 <= b2)
+				mb = b1;
+			if (b2 >= b1 && b2 <= b3 || b2 >= b3 && b2 <= b1)
+				mb = b2;
+			if (b3 >= b2 && b3 <= b1 || b3 >= b1 && b3 <= b2)
+				mb = b3;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			glColor3f((float)mr / 255, (float)mg / 255, (float)mb / 255);
 			glVertex2f(i, j);
 		}
 	glEnd();

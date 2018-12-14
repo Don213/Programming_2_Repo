@@ -22,13 +22,15 @@ void handleButton(int button, int state, int x, int y);
 void printText(int x, int y, const char *string);
 
 
-
 void *font = GLUT_BITMAP_TIMES_ROMAN_24;//GLUT_STROKE_ROMAN;
 const int WIDTH = 720;
 const int HEIGHT = 480;
-
 static int screenx = 0;
 static int screeny = 0;
+
+
+
+
 
 int main(int argc, char** argv)
 {
