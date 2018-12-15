@@ -12,12 +12,14 @@
 
 #include <stdio.h>
 #include <string.h>
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <math.h>
 
 void init();
 void display();
-void startScreen();
+//void startScreen();
 void handleButton(int button, int state, int x, int y);
 void printText(int x, int y, const char *string);
 
@@ -29,20 +31,52 @@ static int screenx = 0;
 static int screeny = 0;
 
 
+int rgb[HEIGHT][WIDTH][3] = { 0 };
+
 
 
 
 int main(int argc, char** argv)
 {
-	glutInit(&argc, argv);
+	
+	srand(time(NULL));
+	
+	int fifty = 0;
 
+	for (int i = 0; i < WIDTH; i++) {
+		rgb[0][i][0] = ((rand() % 50) + 205);
+		rgb[0][i][1] = ((rand() % 50) + 205);
+		//rgb[0][i][2] = 0;
+	}
+
+	for (int j = 1; j < HEIGHT; j++) {
+		for (int i = 0; i < WIDTH; i++) {
+			rgb[HEIGHT][WIDTH][0] = (rgb[HEIGHT][WIDTH - 1][0] + rgb[HEIGHT][WIDTH + 1][0] + rgb[HEIGHT - 1][WIDTH - 1][0] + rgb[HEIGHT - 1][WIDTH + 1][0] + rgb[HEIGHT - 1][WIDTH][0]) / 5;
+			fifty = (rand() % 2);
+			if (fifty == 0) { rgb[HEIGHT][WIDTH][0] = rgb[HEIGHT][WIDTH][0] - ((rand()%4)+1); }
+			rgb[HEIGHT][WIDTH][1] = (rgb[HEIGHT][WIDTH - 1][1] + rgb[HEIGHT][WIDTH + 1][1] + rgb[HEIGHT - 1][WIDTH - 1][1] + rgb[HEIGHT - 1][WIDTH + 1][1] + rgb[HEIGHT - 1][WIDTH][1]) / 5;
+			fifty = (rand() % 2);
+			if (fifty == 0) { rgb[HEIGHT][WIDTH][1] = rgb[HEIGHT][WIDTH][1] - ((rand() % 8) + 1); }
+			rgb[HEIGHT][WIDTH][2] = 0;
+		}
+	}
+	
+			
+
+
+
+
+
+
+
+	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_MULTISAMPLE | GLUT_DEPTH);
 	glutInitWindowSize(WIDTH, HEIGHT);
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Just A Window");
 
 	init();
-	glutDisplayFunc(display);
+	glutIdleFunc(display);
 	glutMouseFunc(handleButton);
 
 	glutMainLoop();
@@ -54,8 +88,7 @@ void init()
 {
 
 	glClearColor(0.0, 0.0, 0.0, 0.0);
-	glColor3f(1.0, 1.0, 1.0);
-
+	glColor3d(255, 0, 100);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
@@ -66,74 +99,11 @@ void init()
 /* For this lab you only need to work in this display function */
 void display()
 {
-	/*
-	// Clear the screen
-	glClear(GL_COLOR_BUFFER_BIT);
-	printText(WIDTH/5, HEIGHT/4, "This demonstrates some simple 2D drawings");
-	*/
 
-	/*
-	// Draw some points
-	glBegin(GL_POINTS);
-	// Change color to green  (r,g,b) where r,g,b is 0-1
-	glColor3f(0, 1, 0);
-	glVertex2f(100, 100);
-	glColor3f(1, 1, 1);  // Color to white
-	glVertex2f(10, 20);
-	glEnd();
-	*/
-
-	/*
-	// Draw a line
-	glBegin(GL_LINES);
-	glVertex2f(50, 50);
-	glVertex2f(75, 150);
-	glEnd();
-	*/
-
-	/*
-	// Draw a rectangle given the four corners
-	glBegin(GL_QUADS);  // Use GL_LINE_LOOP for hollow
-	glVertex2f(200, 10); // x1,y1
-	glVertex2f(300, 10); // x2, y1
-	glVertex2f(300, 50); // x2, y2
-	glVertex2f(200, 50); // x1, y2
-	glEnd();
-	*/
-	/*
-	// Draws a polygon given the coordinates
-	glBegin(GL_POLYGON);
-	glColor3f(1, 0, 0); // Change to red
-	glVertex2f(410, 10);
-	glVertex2f(510, 210);
-	glVertex2f(410, 210);
-	glVertex2f(401, 100);
-	glVertex2f(410, 50);
-	glEnd();
-	*/
-
-	// Draw a rectangle given the four corners
-	glBegin(GL_QUADS);  // Use GL_LINE_LOOP for hollow
-	glColor3f(0, 0, 1); // Change to Blue
-	glVertex2f(50, 200); // x1,y1
-	glVertex2f(200, 200); // x2, y1
-	glVertex2f(200, 50); // x2, y2
-	glVertex2f(50, 50); // x1, y2
-	glEnd();
-
-
-	
-	glBegin(GL_POLYGON);
-	glColor3f(1, 1, 0); // Change to yellow
-	glVertex2f(50, 200);
-	glVertex2f(200, 200);
-	glVertex2f(125, 50);
-	glEnd();
-	
-
+	glDrawPixels(WIDTH, HEIGHT, GL_RGB, GL_UNSIGNED_INT, rgb);
 
 	glutSwapBuffers();
-	glFlush();
+	//glFlush();
 
 	return;
 }
