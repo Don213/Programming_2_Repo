@@ -6,140 +6,128 @@
 // To the reader: You only need to focus on the code in the "display" function
 // for now.
 
-#include "GL/glut.h"
-#include "GL/gl.h"
-#include "GL/glu.h"
-
-#include <stdio.h>
-#include <string.h>
+#include "gl/glut.h"
+#include "gl/gl.h"
+#include "gl/glu.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <string.h>
 #include <math.h>
+#include <iostream>
+#include <ctime>
+#include <thread>
+#include <chrono>
 
-void init();
-void display();
-//void startScreen();
-void handleButton(int button, int state, int x, int y);
-void printText(int x, int y, const char *string);
+using namespace std;
 
-
-void *font = GLUT_BITMAP_TIMES_ROMAN_24;//GLUT_STROKE_ROMAN;
-const int WIDTH = 230;
-const int HEIGHT = 400;
-static int screenx = 0;
-static int screeny = 0;
+GLsizei height = 400;
+GLsizei width = 230;
 
 
-int rgb[HEIGHT][WIDTH][3] = { 0 };
+int x = 0, y = 0;
+float r, g, b;
+int rgb[400][230][3] = { 0 };
 
 
+void idle()
+{
+
+	srand(time(NULL));
+
+
+	for (int i = 1; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+
+			rgb[j][i][0] = 150;
+			rgb[j][i][1] = 000;
+			rgb[j][i][2] = 255;
+
+		}
+	}
+
+
+	
+	/*
+	for (int j = 0; j < width; j++) {
+		rgb[j][0][0] = (rand() % 50) + 205;
+		rgb[j][0][1] = (rand() % 50) + 205;
+		rgb[j][0][2] = 0;
+	}
+
+
+	for (int i = 1; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+			//
+			rgb[j][i][0] = (rgb[j - 1][i][0] + rgb[j + 1][i][0] + rgb[j - 1][i - 1][0] + rgb[j + 1][i - 1][0] + rgb[j][i - 1][0]) / 5;
+			if (rand() % 2 == 1) { rgb[j][i][0] = rgb[j][i][0] - 4; }
+			//
+			rgb[j][i][1] = (rgb[j - 1][i][1] + rgb[j + 1][i][1] + rgb[j - 1][i - 1][1] + rgb[j + 1][i - 1][1] + rgb[j][i - 1][1]) / 5;
+			if (rand() % 2 == 1) { rgb[j][i][1] = rgb[j][i][1] - 8; }
+			//
+			rgb[j][i][2] = 0;
+			//
+		}
+	}
+		*/
+
+
+
+	/*
+	x = rand() % 230;
+	y = rand() % 400;
+
+	r = (float)((rand() % 9)) / 8;
+	g = (float)((rand() % 9)) / 8;
+	b = (float)((rand() % 9)) / 8;
+	*/
+	glutPostRedisplay();
+}
+void display(void)
+{
+	glDrawBuffer(GL_UNSIGNED_INT);
+	glDrawBuffer(CREATBuffer);
+	glRasterPos2i(0, 0);
+	glDrawPixels(width, height, GL_UNSIGNED_INT, GL_UNSIGNED_INT, rgb);
+	
+	glutSwapBuffers();
+	glutSwapBuffers();
+	glutSwapBuffers();
+
+
+	/*
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluOrtho2D(0.0, 230.0, 0.0, 400.0);
+
+	glColor3f(r, g, b);
+	glPointSize(3);
+	glBegin(GL_POINTS);
+	glVertex2i(x, y);
+	glEnd();
+
+	glFlush();
+	*/
+}
 
 
 int main(int argc, char** argv)
 {
-	
-	srand(time(NULL));
-	
-	int fifty = 0;
-
-	for (int i = 0; i < WIDTH; i++) {
-		rgb[0][i][0] = ((rand() % 50) + 205);
-		rgb[0][i][1] = ((rand() % 50) + 205);
-		//rgb[0][i][2] = 0;
-	}
-
-	for (int j = 1; j < HEIGHT; j++) {
-		for (int i = 0; i < WIDTH; i++) {
-			rgb[HEIGHT][WIDTH][0] = (rgb[HEIGHT][WIDTH - 1][0] + rgb[HEIGHT][WIDTH + 1][0] + rgb[HEIGHT - 1][WIDTH - 1][0] + rgb[HEIGHT - 1][WIDTH + 1][0] + rgb[HEIGHT - 1][WIDTH][0]) / 5;
-			fifty = (rand() % 2);
-			if (fifty == 0) { rgb[HEIGHT][WIDTH][0] = rgb[HEIGHT][WIDTH][0] - ((rand()%4)+1); }
-			rgb[HEIGHT][WIDTH][1] = (rgb[HEIGHT][WIDTH - 1][1] + rgb[HEIGHT][WIDTH + 1][1] + rgb[HEIGHT - 1][WIDTH - 1][1] + rgb[HEIGHT - 1][WIDTH + 1][1] + rgb[HEIGHT - 1][WIDTH][1]) / 5;
-			fifty = (rand() % 2);
-			if (fifty == 0) { rgb[HEIGHT][WIDTH][1] = rgb[HEIGHT][WIDTH][1] - ((rand() % 8) + 1); }
-			rgb[HEIGHT][WIDTH][2] = 0;
-		}
-	}
-	
-			
-
-
-
-
-
-
-
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_MULTISAMPLE | GLUT_DEPTH);
-	glutInitWindowSize(WIDTH, HEIGHT);
-	glutInitWindowPosition(0, 0);
-	glutCreateWindow("Just A Window");
 
-	init();
-	glutIdleFunc(display);
-	glutMouseFunc(handleButton);
 
+
+	glutInitWindowSize(1000, 1000);
+	glutCreateWindow("Randomly generated points");
+	glClearColor(0, 0, 0, 0);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glutDisplayFunc(display);
+	glutIdleFunc(idle);
 	glutMainLoop();
-
-	return 0;
-}
-
-void init()
-{
-
-	glClearColor(0.0, 0.0, 0.0, 0.0);
-	glColor3d(255, 0, 100);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-
-	gluOrtho2D(screenx, screenx + WIDTH, screeny + HEIGHT, screeny);
 }
 
 
-/* For this lab you only need to work in this display function */
-void display()
-{
 
-	glDrawPixels(WIDTH, HEIGHT, GL_RGB, GL_UNSIGNED_INT, rgb);
 
-	glutSwapBuffers();
-	//glFlush();
 
-	return;
-}
 
-/* Handles a mouse button, not needed for this program */
-void handleButton(int button, int state, int x, int y)
-{
-	static int index = -1;
 
-	if (button == GLUT_LEFT_BUTTON)
-	{
-		if (state == GLUT_DOWN)
-		{
-			glClear(GL_COLOR_BUFFER_BIT);
-			printText(30, HEIGHT / 2, "You clicked the mouse button!");
-			glutSwapBuffers();
-			glFlush();
-
-		}
-		if (state == GLUT_UP)
-		{
-			display();
-		}
-
-	}
-}
-
-// This function prints a string of text on the screen at coordinate x,y
-void printText(int x, int y, const char *string)
-{
-	int i, length;
-
-	glRasterPos2f(x, y);
-	length = (int)strlen(string);
-	for (i = 0; i < length; i++)
-	{
-		glutBitmapCharacter(font, string[i]);
-	}
-}

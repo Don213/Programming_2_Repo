@@ -47,8 +47,44 @@ Square *s1, *s2;
 MulticolorCircle *mc;
 Shape *shape;
 
+
+
+
+
+
+int rgb[HEIGHT][WIDTH][3] = { 0 };
+
 int main(int argc, char** argv)
 {
+	int fifty = 0;
+
+
+	for (int i = 0; i < WIDTH; i++) {
+		rgb[0][i][0] = ((rand() % 50) + 205);
+		rgb[0][i][1] = ((rand() % 50) + 205);
+		//rgb[0][i][2] = 0;
+	}
+
+	for (int j = 1; j < HEIGHT; j++) {
+		for (int i = 0; i < WIDTH; i++) {
+			rgb[HEIGHT][WIDTH][0] = (rgb[HEIGHT][WIDTH - 1][0] + rgb[HEIGHT][WIDTH + 1][0] + rgb[HEIGHT - 1][WIDTH - 1][0] + rgb[HEIGHT - 1][WIDTH + 1][0] + rgb[HEIGHT - 1][WIDTH][0]) / 5;
+			fifty = (rand() % 2);
+			if (fifty == 0) { rgb[HEIGHT][WIDTH][0] = rgb[HEIGHT][WIDTH][0] - ((rand() % 4) + 1); }
+			rgb[HEIGHT][WIDTH][1] = (rgb[HEIGHT][WIDTH - 1][1] + rgb[HEIGHT][WIDTH + 1][1] + rgb[HEIGHT - 1][WIDTH - 1][1] + rgb[HEIGHT - 1][WIDTH + 1][1] + rgb[HEIGHT - 1][WIDTH][1]) / 5;
+			fifty = (rand() % 2);
+			if (fifty == 0) { rgb[HEIGHT][WIDTH][1] = rgb[HEIGHT][WIDTH][1] - ((rand() % 8) + 1); }
+			rgb[HEIGHT][WIDTH][2] = 0;
+		}
+	}
+
+
+
+
+
+
+
+
+
 	srand(time(NULL));
 	glutInit(&argc, argv);
 
@@ -139,8 +175,32 @@ void display()
 	mc->draw();
 	shape->draw();
 
+
+
+
+
+
+
+	//glDrawPixels(WIDTH, HEIGHT, GL_RGB, GL_UNSIGNED_INT, rgb);
+
+	for (int j = 1; j < HEIGHT; j++) {
+		for (int i = 0; i < WIDTH; i++) {
+			glColor3d(rgb[HEIGHT][WIDTH][0], rgb[HEIGHT][WIDTH][1], rgb[HEIGHT][WIDTH][2]);
+			glPointSize(1);
+			glVertex2i(i, j);
+			//glBegin;
+		}
+	}
+
+
+
+
+
 	glutSwapBuffers();
 	glFlush();
+
+
+	
 
 	return;
 }
