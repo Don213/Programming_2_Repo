@@ -3,6 +3,8 @@
 //
 // The main function creates the world then just prompts for an input (quit or continue with the next timestep).
 //
+//CODE BORROWED FROM PROFESSOR MOCK. GRAPHICAL ITEMS ADDED AFTERWARDS.
+////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
 #include <cstdlib>
